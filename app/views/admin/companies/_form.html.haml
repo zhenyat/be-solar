@@ -1,0 +1,24 @@
+.container
+  .row
+    .col-ms-6
+      = simple_form_for([:admin, @company], html: {multipart: true}) do |f|
+        = f.error_notification message: t('messages.error_notification')
+
+        .form-inputs
+          = render 'admin/shared/form_ancestry', f: f, object: @company
+          = f.input :name
+          = f.input :title
+          = f.input :email
+          = f.input :phone
+          = f.input :address
+          = f.input :url
+
+          = f.input :status, default: 0
+          /= render 'admin/shared/status_buttons', f: f
+          = f.input :seo_title
+          = f.input :seo_description
+          = f.input :seo_keywords
+
+          = render 'admin/shared/form_rich_text_content', f: f, object: @company
+          = render 'admin/shared/form_images', f: f, object: @company
+          = render 'admin/shared/form_actions', f: f, object: @company

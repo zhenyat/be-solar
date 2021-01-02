@@ -1,0 +1,38 @@
+.container
+  %h1= t Company.model_name.human
+  %table.table.table-striped
+    %tbody
+      - @company.attributes.each do |key, value|
+        - unless key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at'
+          %tr
+            - if key == 'status'
+              %td= t 'status.status'
+              %td= status_mark @company.status
+            - elsif key == 'ancestry'
+              - if @company.parent.present?
+                %td= t 'tree.parent'
+                - if Company.column_names.include? 'title'
+                  %td= "#{@company.parent.title} (id: #{@company.ancestry})"
+                - elsif Company.column_names.include? 'name'
+                  %td= "#{@company.parent.name} (id: #{@company.ancestry})"
+                - else
+                  %td= "#{@company.ancestry})"
+              - if @company.children.present?
+                %tr
+                  %td= t 'tree.children'
+                  %td
+                    - @company.children.each do |child|
+                      - if Company.column_names.include? 'title'
+                        = "#{child.title} (id=#{child.id})"
+                      - elsif Company.column_names.include? 'name'
+                        = "#{child.name} (id=#{child.id})"
+                      - else
+                        = "#{child.id}"
+                      - unless child == @company.children.last
+                        %br
+            - else
+              %td= t "activerecord.attributes.company.#{key}"
+              %td= value
+      = render 'admin/shared/show_images', object: @company
+  = render 'admin/shared/show_rich_text_content', object: @company
+  = render 'admin/shared/show_actions', object: @company

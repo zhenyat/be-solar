@@ -2,6 +2,11 @@
 #   15.12.2020  ZT: API is included
 ################################################################################
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'copmapnies/show'
+    end
+  end
   mount_devise_token_auth_for 'Account', at: 'auth'
  
   app_scope = MULTILINGUAL ? "/:locale" : "/"
@@ -18,12 +23,14 @@ Rails.application.routes.draw do
       resources :users
       resources :samples
       resources :accounts, only: [:index, :show]
+      resources :companies
       # Add new admin resources before this line
     end
   
     namespace :api do
       namespace :v1 do
         resources :samples
+        resources :companies#, only: :show
       end
     end
     root 'pages#home'   # root_path for BE 
