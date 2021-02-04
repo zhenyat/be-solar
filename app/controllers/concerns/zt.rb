@@ -12,7 +12,7 @@ module Zt
   # An alternative solution: *polymorphic* urls (e.g. redirect_to polymorphic_url)
   ##############################################################################
   def default_url_options
-    { locale: I18n.locale }
+    { locale: I18n.locale, api_host: 'http://localhost:3001/' }
   end
 
   ##############################################################################

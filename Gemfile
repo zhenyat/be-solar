@@ -53,12 +53,13 @@
 #   19.12.2020  Gems 'seedbank' & 'ancestry'
 #   30.12.2020  Ruby 3.0.0 / Rails 6.1.0
 #               devise_token_auth version from gitbub got Rails 6.1
+#   03.02.2021  Rails 6.1.1
 ################################################################################
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
-gem 'rails', '6.1.0'               # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '6.1.1'               # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 gem 'sqlite3'                      # Use sqlite3    as the database for Active Record
 # gem 'sqlite3', groups: [:test, :development]
@@ -86,7 +87,7 @@ gem 'pundit'                       # https://github.com/elabs/pundit
 gem 'rack-cors'
 gem 'devise'                       # https://github.com/plataformatec/devise
 gem 'devise_token_auth', github:  'lynndylanhurley/devise_token_auth'
-
+# gem 'active_model_serializers'
 gem 'image_processing'             # Use Active Storage variant
 
 # crono for jobs

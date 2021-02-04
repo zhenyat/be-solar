@@ -6,6 +6,7 @@ module ImagesHandleable
 
   included do
     has_one_attached  :cover_image
+    attribute         :cover_image_url, :string, default: ''
     has_many_attached :images
     before_destroy    :remove_all_images, prepend: true
 
