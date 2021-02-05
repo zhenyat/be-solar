@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_171517) do
+ActiveRecord::Schema.define(version: 2021_02_05_075230) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -73,6 +73,23 @@ ActiveRecord::Schema.define(version: 2020_12_31_171517) do
     t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "title", null: false
+    t.text "abstract", default: "", null: false
+    t.integer "position"
+    t.integer "status", limit: 1, default: 0, null: false
+    t.string "url", null: false
+    t.string "seo_title", null: false
+    t.text "seo_description", default: ""
+    t.text "seo_keywords", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+    t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "companies", force: :cascade do |t|

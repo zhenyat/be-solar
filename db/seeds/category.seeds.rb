@@ -41,7 +41,6 @@ begin
     )
 
     products = Category.create(
-      parent:   'products',
       name:     'products', 
       title:    'Продукты',
       abstract: 'Продукты питания на основе конопли',
@@ -52,7 +51,6 @@ begin
     )
 
     cosmetics = Category.create(
-      parent:   'cosmetics',
       name:     'cosmetics', 
       title:    'Косметика',
       abstract: 'Косметика на основе конопли',
@@ -62,7 +60,7 @@ begin
       seo_keywords: ''
     )
     perfume = Category.create(
-      parent:   'cosmetics',
+      parent:    cosmetics,
       name:     'perfume', 
       title:    'Парфюмерия',
       abstract: 'Духи с феромонами на основе французских парфюмерных композиций',
@@ -70,9 +68,9 @@ begin
       seo_title: 'Парфюмерия с феромонами',
       seo_description: '',
       seo_keywords: ''
-
+    )
     hair_cosmetics = Category.create(
-      parent:   'cosmetics',
+      parent:    cosmetics,
       name:     'hair_cosmetics', 
       title:    'Шампуни и гели для волос',
       abstract: 'Шампуни и гели для волос на основе конопли',
@@ -82,7 +80,7 @@ begin
       seo_keywords: ''
     )
     face_cosmetics = Category.create(
-      parent:   'cosmetics',
+      parent:    cosmetics,
       name:     'face_cosmetics', 
       title:    'Косметика для лица',
       abstract: 'Косметика для лица на основе конопли',
@@ -92,7 +90,7 @@ begin
       seo_keywords: ''
     )
     body_cosmetics = Category.create(
-      parent:   'cosmetics',
+      parent:    cosmetics,
       name:     'body_cosmetics', 
       title:    'Косметика для тела',
       abstract: 'Лосьоны и кремы для тела на основе конопли',
@@ -102,7 +100,7 @@ begin
       seo_keywords: ''
     )
     hands_cosmetics = Category.create(
-      parent:   'cosmetics',
+      parent:    cosmetics,
       name:     'hands_cosmetics', 
       title:    'Косметика для рук',
       abstract: 'Лосьоны и кремы для рук на основе конопли',
@@ -113,7 +111,6 @@ begin
     )
 
     headdresses = Category.create(
-      parent:   'headdresses',
       name:     'headdresses', 
       title:    'Головные уборы из конопли',
       abstract: 'Шапки, шляпы и повязки ручной работы из конопляной пряжи',
@@ -123,8 +120,8 @@ begin
       seo_keywords: ''
     )
     caps = Category.create(
-      parent:   'caps',
-      name:     'headdresses', 
+      parent:   headdresses,
+      name:     'caps', 
       title:    'Шапки',
       abstract: 'Шапки ручной работы из конопляной пряжи',
       url:      'shapki-iz-konopli',
@@ -133,8 +130,8 @@ begin
       seo_keywords: ''
     )
     headbands = Category.create(
-      parent:   'headbands',
-      name:     'headdresses', 
+      parent:   headdresses,
+      name:     'headbands', 
       title:    'Повязки',
       abstract: 'Головные повязки из конопляной пряжи',
       url:      'povyazki-iz-konopli',
@@ -143,8 +140,8 @@ begin
       seo_keywords: ''
     )
     hats = Category.create(
-      parent:   'hats',
-      name:     'headdresses', 
+      parent:   headdresses,
+      name:     'hats', 
       title:    'Шляпки',
       abstract: 'Шляпы и панамы из конопляной пряжи',
       url:      'shlyapki-iz-konopli',
@@ -152,7 +149,6 @@ begin
       seo_description: '',
       seo_keywords: ''
     )
-
     puts "===== 'Category' record(s) created"
   else
     puts "===== 'Category' seeding skipped"

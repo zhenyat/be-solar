@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :samples
       resources :accounts, only: [:index, :show]
       resources :companies
+        resources :categories
       # Add new admin resources before this line
     end
   

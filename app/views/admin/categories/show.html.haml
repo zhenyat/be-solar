@@ -1,0 +1,38 @@
+.container
+  %h1= t Category.model_name.human
+  %table.table.table-striped
+    %tbody
+      - @category.attributes.each do |key, value|
+        - unless key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at'
+          %tr
+            - if key == 'status'
+              %td= t 'status.status'
+              %td= status_mark @category.status
+            - elsif key == 'ancestry'
+              - if @category.parent.present?
+                %td= t 'tree.parent'
+                - if Category.column_names.include? 'title'
+                  %td= "#{@category.parent.title} (id: #{@category.ancestry})"
+                - elsif Category.column_names.include? 'name'
+                  %td= "#{@category.parent.name} (id: #{@category.ancestry})"
+                - else
+                  %td= "#{@category.ancestry})"
+              - if @category.children.present?
+                %tr
+                  %td= t 'tree.children'
+                  %td
+                    - @category.children.each do |child|
+                      - if Category.column_names.include? 'title'
+                        = "#{child.title} (id=#{child.id})"
+                      - elsif Category.column_names.include? 'name'
+                        = "#{child.name} (id=#{child.id})"
+                      - else
+                        = "#{child.id}"
+                      - unless child == @category.children.last
+                        %br
+            - else
+              %td= t "activerecord.attributes.category.#{key}"
+              %td= value
+      = render 'admin/shared/show_images', object: @category
+  = render 'admin/shared/show_rich_text_content', object: @category
+  = render 'admin/shared/show_actions', object: @category
