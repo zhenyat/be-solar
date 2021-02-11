@@ -7,6 +7,9 @@ ru:
       account:
         one:                    Аккаунт
         other:                  Аккаунты
+      category:
+        one:                    Категория
+        other:                  Категории
       sample:
         one:                    Образец
         other:                  Образцы
@@ -26,6 +29,15 @@ ru:
         nickname:               Псевдоним
         password:               Пароль
         password_confirmation:  Подтверждение пароля
+      category:
+        name:                   Имя
+        title:                  Наименование
+        abstract:               Краткое описание
+        position:               Позиция
+        parent:                 Предок
+        cover_image:            Обложка
+        visible:                Видимый
+        status:                 Статус
       sample:
         name:                   Имя
         title:                  Наименование

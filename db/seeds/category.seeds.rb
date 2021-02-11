@@ -40,12 +40,32 @@ begin
       seo_keywords:    'Сумка на пояс из конопли купить Москва, hemp belt bag, сумка на пояс купить Москва'
     )
 
-    products = Category.create(
-      name:     'products', 
-      title:    'Продукты',
-      abstract: 'Продукты питания на основе конопли',
-      url:      'eda-iz-konopli',
-      seo_title: 'Продукты из конопли',
+    clothing = Category.create(
+      name:     'clothing', 
+      title:    'Одежда',
+      abstract: 'Одежда из конопляных материалов',
+      url:      'odezhda',
+      seo_title: 'Конопляная одежда',
+      seo_description: '',
+      seo_keywords: ''
+    )
+    men_clothing = Category.create(
+      parent:   clothing,
+      name:     'men_clothing', 
+      title:    'Мужская одежда',
+      abstract: 'Уникальная одежда для сильных, свободных духом и уверенных в себе мужчин.',
+      url:      'odezhda-muzhskaya',
+      seo_title: 'Мужская одежда',
+      seo_description: '',
+      seo_keywords: ''
+    )
+    women_clothing = Category.create(
+      parent:   clothing,
+      name:     'women_clothing', 
+      title:    'Женская одежда',
+      abstract: 'Уникальная одежда для сильных, свободных духом и уверенных в себе мужчин.',
+      url:      'odezhda-zhenskaya',
+      seo_title: 'Женская одежда',
       seo_description: '',
       seo_keywords: ''
     )
@@ -60,12 +80,32 @@ begin
       seo_keywords: ''
     )
     perfume = Category.create(
-      parent:    cosmetics,
+      parent:   cosmetics,
       name:     'perfume', 
       title:    'Парфюмерия',
       abstract: 'Духи с феромонами на основе французских парфюмерных композиций',
       url:      'duhi-s-feromonami',
       seo_title: 'Парфюмерия с феромонами',
+      seo_description: '',
+      seo_keywords: ''
+    )
+    men_perfume = Category.create(
+      parent:   perfume,
+      name:     'men_perfume', 
+      title:    'Мужская парфюмерия',
+      abstract: 'Мужская парфюмерия с феромонами',
+      url:      'muzhskaya-parfumeria',
+      seo_title: 'Мужская парфюмерия с феромонами',
+      seo_description: '',
+      seo_keywords: ''
+    )
+    women_perfume = Category.create(
+      parent:   perfume,
+      name:     'women_perfume', 
+      title:    'Женская парфюмерия',
+      abstract: 'Женская парфюмерия с феромонами',
+      url:      'zhenskaya-parfumeria',
+      seo_title: 'Женская парфюмерия с феромонами',
       seo_description: '',
       seo_keywords: ''
     )
@@ -90,7 +130,7 @@ begin
       seo_keywords: ''
     )
     body_cosmetics = Category.create(
-      parent:    cosmetics,
+      parent:   cosmetics,
       name:     'body_cosmetics', 
       title:    'Косметика для тела',
       abstract: 'Лосьоны и кремы для тела на основе конопли',
@@ -100,7 +140,7 @@ begin
       seo_keywords: ''
     )
     hands_cosmetics = Category.create(
-      parent:    cosmetics,
+      parent:   cosmetics,
       name:     'hands_cosmetics', 
       title:    'Косметика для рук',
       abstract: 'Лосьоны и кремы для рук на основе конопли',
@@ -149,6 +189,49 @@ begin
       seo_description: '',
       seo_keywords: ''
     )
+
+    products = Category.create(
+      name:     'products', 
+      title:    'Продукты',
+      abstract: 'Продукты питания на основе конопли',
+      url:      'eda-iz-konopli',
+      seo_title: 'Продукты из конопли',
+      seo_description: '',
+      seo_keywords: ''
+    )
+
+    accessories  = Category.create(
+      name:     'accessories', 
+      title:    'Аксессуары',
+      abstract: 'Пояса, фенечки, мочалочки из конопли',
+      url:      'aksessuary',
+      seo_title: 'Аксессуары из конопли',
+      seo_description: '',
+      seo_keywords: ''
+    )
+
+    hemp_shoes  = Category.create(
+      name:     'hemp_shoes', 
+      title:    'Обувь из конопли',
+      abstract: 'Обувь из конопляной ткани для ежедневной носки. Ткань обработана специальным составом, что не дает им промокать во время дождя. Унисекс. Максимальная естественность и комфорт при ходьбе обеспечиваются экологичностью и уникальными свойствами используемого материала.
+      Конопляная обувь это максимальное единение с природой и комфорт при носке!',
+      url:      'obuv-iz-konopli',
+      seo_title: 'Обувь из конопли',
+      seo_description: '',
+      seo_keywords: ''
+    )
+    
+    kids_clothing = Category.create(
+      parent:   clothing,
+      name:     'kids_clothing', 
+      title:    'Детская одежда',
+      abstract: 'Целебная одежда для деток ручной работы',
+      url:      'odezhda-detskaya',
+      seo_title: 'Детская одежда',
+      seo_description: '',
+      seo_keywords: ''
+    )
+
     puts "===== 'Category' record(s) created"
   else
     puts "===== 'Category' seeding skipped"

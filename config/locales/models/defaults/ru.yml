@@ -26,6 +26,10 @@ ru:
     archived:       Архивный
     status:         Статус
 
+  visibility:       Видимость
+    # visible:        Видимый
+    # hidden:         Скрытый
+
   # Active Text & Storage  
   content:          Контент
   images:
@@ -34,7 +38,7 @@ ru:
 
   # Gem 'ancestry'
   tree:
-    parent:         Предок
+    parent:         Родитель
     parents:        Предки         
     child:          Потомок
     children:       Потомки

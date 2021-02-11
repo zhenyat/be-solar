@@ -29,6 +29,11 @@
               = link_to edit_admin_user_path(@current_user) do
                 %span.fas.fa-user.fa-2x{"aria-hidden" => "true"}
                 = t(:profile)
+        %li.nav-item
+          .nav-link
+            = link_to  admin_tree_index_path do
+              %span.fas.fa-tree.fa-2x{"aria-hidden" => "true"}
+              = t(:admin_tree)
 
         / Dropdown list
         %li.nav-item.dropdown

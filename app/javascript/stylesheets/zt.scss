@@ -24,3 +24,16 @@ h1 {color: red}
 .form-image-cell {
   padding: 5px;
 }
+
+td.value {
+  font-weight: bold;
+}
+
+.visible {
+  color: blue;
+  text-transform: uppercase;
+}
+// .invisible {
+//   color: lightgrey;
+//   text-transform: lowercase;
+// }

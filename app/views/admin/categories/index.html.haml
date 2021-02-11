@@ -4,10 +4,12 @@
     %tr
       %th= Category.human_attribute_name(:name)
       %th= Category.human_attribute_name(:title)
-      -# %th= Category.human_attribute_name(:abstract)
-      %th= Category.human_attribute_name(:position)
-      %th= Category.human_attribute_name(:url)
-      -# %th= Category.human_attribute_name(:seo_title)
+      %th= Category.human_attribute_name(:cover_image)
+      -# %th= Category.human_attribute_name(:position)
+      %th= Category.human_attribute_name(:parent)
+      %th= t 'visibility'
+      %th= Category.human_attribute_name(:url).upcase
+      %th= Category.human_attribute_name(:seo_title)
       -# %th= Category.human_attribute_name(:seo_description)
       -# %th= Category.human_attribute_name(:seo_keywords)
       %th= t 'status.status'
@@ -18,11 +20,13 @@
       %tr
         %td= category.name
         %td= category.title
-        -# %td= category.abstract
-        %td= category.position
+        %td= image_tag category.cover_image.variant(resize_to_limit: [50, 50]) if category.cover_image.attached?
+        -# %td= category.position
+        %td= category.parent.name if category.has_parent?
+        %td= visibility_mark category.visible
         %td= category.url
+        %td= category.seo_title
         %td= status_mark category.status
-        -# %td= category.seo_title
         -# %td= category.seo_description
         -# %td= category.seo_keywords
         %td= render 'admin/shared/index_buttons', resource: category

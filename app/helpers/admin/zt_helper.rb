@@ -25,4 +25,13 @@ module Admin::ZtHelper
       image_tag('admin/minus_mark.png', size: '12x15', alt: 'False')
     end
   end
+
+  # Selects a visibility mark to be displayed
+  def visibility_mark visible
+    if visible 
+      image_tag('admin/check_mark.png', size: '12x15', alt: 'True')
+    else
+      image_tag('admin/minus_mark.png', size: '12x15', alt: 'False')
+    end
+  end
 end

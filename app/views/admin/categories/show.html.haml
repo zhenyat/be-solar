@@ -9,18 +9,19 @@
               %td= t 'status.status'
               %td= status_mark @category.status
             - elsif key == 'ancestry'
-              - if @category.parent.present?
+              - if @category.has_parent?
                 %td= t 'tree.parent'
-                - if Category.column_names.include? 'title'
-                  %td= "#{@category.parent.title} (id: #{@category.ancestry})"
-                - elsif Category.column_names.include? 'name'
-                  %td= "#{@category.parent.name} (id: #{@category.ancestry})"
-                - else
-                  %td= "#{@category.ancestry})"
-              - if @category.children.present?
+                %td.value
+                  - if Category.column_names.include? 'title'
+                    = "#{@category.parent.title} (id: #{@category.parent.id})"
+                  - elsif Category.column_names.include? 'name'
+                    = "#{@category.parent.name} (id: #{@category.parent.id})"
+                  - else
+                    = "#{@category.parent.id})"
+              - if @category.has_children?
                 %tr
                   %td= t 'tree.children'
-                  %td
+                  %td.value
                     - @category.children.each do |child|
                       - if Category.column_names.include? 'title'
                         = "#{child.title} (id=#{child.id})"
@@ -32,7 +33,7 @@
                         %br
             - else
               %td= t "activerecord.attributes.category.#{key}"
-              %td= value
+              %td.value= value
       = render 'admin/shared/show_images', object: @category
   = render 'admin/shared/show_rich_text_content', object: @category
   = render 'admin/shared/show_actions', object: @category

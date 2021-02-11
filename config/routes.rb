@@ -24,7 +24,9 @@ Rails.application.routes.draw do
       resources :samples
       resources :accounts, only: [:index, :show]
       resources :companies
-        resources :categories
+      resources :categories
+      resources :tree, only: :index # admin_tree_index_path, url:  /admin/tree/
+      #get 'tree/index'             # admin_tree_index_path, url:  /admin/tree/index
       # Add new admin resources before this line
     end
   

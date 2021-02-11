@@ -26,6 +26,10 @@ en:
     archived:       Archived
     status:         Status
 
+  visibility:       Visibility
+    # visible:        Visible
+    # hidden:         Hidden
+
  # Active Text & Storage
   content:          Content
   images:

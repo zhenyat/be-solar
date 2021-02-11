@@ -7,6 +7,9 @@ en:
       account:
         one:                    Account
         other:                  Accounts
+      category:
+        one:                    Category
+        other:                  Categories
       sample:
         one:                    Sample
         other:                  Samples
@@ -26,6 +29,13 @@ en:
         nickname:               Nickname
         password:               Password
         password_confirmation:  Password confirmation
+      category:
+        name:                   Name
+        title:                  Title
+        abstract:               Abstract
+        position:               Position
+        visible:                Visible
+        status:                 Status
       sample:
         name:                   Name
         title:                  Title

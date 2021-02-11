@@ -1,5 +1,6 @@
 class Admin::CategoriesController < Admin::BaseController
-  before_action :set_category, only: [:show, :edit, :update,:destroy]
+  before_action :set_category,  only: [:show, :edit, :update, :destroy]
+  before_action :positions_swap, only: :update
 
   def index
     @categories = policy_scope(Category)
@@ -15,6 +16,7 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def edit
+    parent = @category.parent
     authorize @category
   end
 
@@ -55,6 +57,18 @@ class Admin::CategoriesController < Admin::BaseController
 
     # Only allows a trusted parameter 'white list' through
     def category_params
-      params.require(:category).permit(:name, :title, :abstract, :position, :status, :url, :seo_title, :seo_description, :seo_keywords, :ancestry, :content, :cover_image, :remove_cover_image, images: [])
+      params.require(:category).permit(:name, :title, :abstract, :position, :visible, :status, :url, :seo_title, :seo_description, :seo_keywords, :ancestry, :content, :cover_image, :remove_cover_image, images: [])
+    end
+
+    # Swaps positions of sibling categories if needed:
+    def positions_swap
+      sibling = Category.find_by id: params[:sibling]
+      if sibling.position != @category.position
+        puts "ZT!-1 #{params[:category][:position]} / #{sibling.position}"
+        params[:category][:position], sibling.position = sibling.position, params[:category][:position]
+        sibling.save
+        # params[:category][:position] = @category.position
+        puts "ZT!-2 #{params[:category][:position]} / #{sibling.position}"
+      end
     end
 end

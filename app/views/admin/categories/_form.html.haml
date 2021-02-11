@@ -10,8 +10,13 @@
           = f.input :title
           = f.input :abstract
           = f.input :position, as: :hidden
+          = f.input :visible
+          -# = f.input :sibling_position, collection: @category.siblings , label_method: :name, label: 'Siblings', value_method: :position, include_blank: false, selected: @category.position
+          = select_tag "sibling", options_from_collection_for_select(@category.siblings, 'id', 'title', @category.id), include_blank: false, label_method: :name, label: 'Siblings'
 
+          -# = options_from_collection_for_select collection: @category.siblings, label_method: :name, label: 'Siblings', value_method: :position, include_blank: false, selected: @category.position
           = f.input :status, default: 0
+
           /= render 'admin/shared/status_buttons', f: f
           = f.input :url
           = f.input :seo_title
