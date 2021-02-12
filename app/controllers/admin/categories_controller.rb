@@ -1,5 +1,5 @@
 class Admin::CategoriesController < Admin::BaseController
-  before_action :set_category,  only: [:show, :edit, :update, :destroy]
+  before_action :set_category,   only: [:show, :edit, :update, :destroy]
   before_action :positions_swap, only: :update
 
   def index
@@ -60,15 +60,19 @@ class Admin::CategoriesController < Admin::BaseController
       params.require(:category).permit(:name, :title, :abstract, :position, :visible, :status, :url, :seo_title, :seo_description, :seo_keywords, :ancestry, :content, :cover_image, :remove_cover_image, images: [])
     end
 
-    # Swaps positions of sibling categories if needed:
+    # Swaps positions of sibling categories if any selected in the _form
     def positions_swap
-      sibling = Category.find_by id: params[:sibling]
-      if sibling.position != @category.position
-        puts "ZT!-1 #{params[:category][:position]} / #{sibling.position}"
-        params[:category][:position], sibling.position = sibling.position, params[:category][:position]
-        sibling.save
-        # params[:category][:position] = @category.position
-        puts "ZT!-2 #{params[:category][:position]} / #{sibling.position}"
+      if params[:sibling].present?
+        sibling = Category.find_by id: params[:sibling]
+
+        sibling_position          = sibling.position
+        initial_category_ancestry = @category.ancestry
+
+        # Swapping
+        params[:category][:position], sibling_position = sibling_position, params[:category][:position]
+
+        params[:category][:ancestry] = initial_category_ancestry    # Restore initial ancestry for Sibling
+        sibling.update!(position: sibling_position)
       end
     end
 end

@@ -11,10 +11,11 @@
           = f.input :abstract
           = f.input :position, as: :hidden
           = f.input :visible
-          -# = f.input :sibling_position, collection: @category.siblings , label_method: :name, label: 'Siblings', value_method: :position, include_blank: false, selected: @category.position
-          = select_tag "sibling", options_from_collection_for_select(@category.siblings, 'id', 'title', @category.id), include_blank: false, label_method: :name, label: 'Siblings'
+          
+          - if @category.sibling_ids.count > 1   # more than just itself
+            = label_tag t('tree.swap_position')
+            = select_tag "sibling", options_from_collection_for_select(@category.siblings.where.not(id: @category.id), 'id', 'title'), include_blank: true
 
-          -# = options_from_collection_for_select collection: @category.siblings, label_method: :name, label: 'Siblings', value_method: :position, include_blank: false, selected: @category.position
           = f.input :status, default: 0
 
           /= render 'admin/shared/status_buttons', f: f
