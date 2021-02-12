@@ -2,8 +2,10 @@ module Admin::TreeHelper
   def nested_groups(groups)
     content_tag(:ul) do
       groups.map do |group, sub_groups|
-        content_tag(:li, ("#{group.title} (#{group.id}/#{group.position}: #{group.name} - #{group.visible})").html_safe, 
-                         class: ('visible' if group.visible_in_tree)) + nested_groups(sub_groups)
+        link_to(         
+          (content_tag(:span, ("#{group.title} (#{group.id}/#{group.position}: #{group.name} - #{group.visible})"), 
+                                class: ('visible' if group.visible_in_tree)) + nested_groups(sub_groups)
+          ).html_safe, [:admin, group])
       end.join.html_safe
     end
   end
