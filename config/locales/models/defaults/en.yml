@@ -27,8 +27,6 @@ en:
     status:         Status
 
   visibility:       Visibility
-    # visible:        Visible
-    # hidden:         Hidden
 
  # Active Text & Storage
   content:          Content

@@ -27,9 +27,7 @@ ru:
     status:         Статус
 
   visibility:       Видимость
-    # visible:        Видимый
-    # hidden:         Скрытый
-
+  
   # Active Text & Storage  
   content:          Контент
   images:

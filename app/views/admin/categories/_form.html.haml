@@ -10,7 +10,7 @@
           = f.input :title
           = f.input :abstract
           = f.input :position, as: :hidden
-          = f.input :visible
+          = f.input :visibility
           
           - if @category.sibling_ids.count > 1   # more than just itself
             = label_tag t('tree.swap_position')

@@ -1,6 +1,7 @@
 class Admin::CategoriesController < Admin::BaseController
   before_action :set_category,   only: [:show, :edit, :update, :destroy]
   before_action :positions_swap, only: :update
+  after_action  :remove_images,  only: :update
 
   def index
     @categories = policy_scope(Category)
@@ -57,7 +58,7 @@ class Admin::CategoriesController < Admin::BaseController
 
     # Only allows a trusted parameter 'white list' through
     def category_params
-      params.require(:category).permit(:name, :title, :abstract, :position, :visible, :status, :url, :seo_title, :seo_description, :seo_keywords, :ancestry, :content, :cover_image, :remove_cover_image, images: [])
+      params.require(:category).permit(:name, :title, :abstract, :position, :visibility, :status, :url, :seo_title, :seo_description, :seo_keywords, :ancestry, :content, :cover_image, :remove_cover_image, images: [])
     end
 
     # Swaps positions of sibling categories if any selected in the _form
@@ -73,6 +74,17 @@ class Admin::CategoriesController < Admin::BaseController
 
         params[:category][:ancestry] = initial_category_ancestry    # Restore initial ancestry for Sibling
         sibling.update!(position: sibling_position)
+      end
+    end
+    
+    # Removes images, selected during Editing
+    def remove_images
+      @category.cover_image.purge if category_params[:remove_cover_image] == '1'
+      image_to_remove_ids = params['image_to_remove_ids']
+      if image_to_remove_ids.present?
+        image_to_remove_ids.each do |image_to_remove_id|
+          @category.images.find(image_to_remove_id).purge
+        end
       end
     end
 end

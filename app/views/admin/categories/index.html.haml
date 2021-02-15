@@ -23,7 +23,7 @@
         %td= image_tag category.cover_image.variant(resize_to_limit: [50, 50]) if category.cover_image.attached?
         -# %td= category.position
         %td= category.parent.name if category.has_parent?
-        %td= visibility_mark category.visible
+        %td= visibility_mark category.visibility
         %td= category.url
         %td= category.seo_title
         %td= status_mark category.status

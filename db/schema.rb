@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_075230) do
     t.string "title", null: false
     t.text "abstract", default: "", null: false
     t.integer "position"
-    t.boolean "visible", default: true
+    t.boolean "visibility", default: true
     t.integer "status", limit: 1, default: 0, null: false
     t.string "url", null: false
     t.string "seo_title", null: false

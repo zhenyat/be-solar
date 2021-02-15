@@ -11,7 +11,7 @@
     %br
     .row
       - if object.cover_image.attached?
-        .col-md-2
+        .col-md-3
           = image_tag object.cover_image.variant(resize_to_fit: [100, 100])
         .col-md-2
           = f.check_box :remove_cover_image

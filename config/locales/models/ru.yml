@@ -36,7 +36,7 @@ ru:
         position:               Позиция
         parent:                 Предок
         cover_image:            Обложка
-        visible:                Видимый
+        visibility:             Видимость
         status:                 Статус
       sample:
         name:                   Имя

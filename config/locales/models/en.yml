@@ -34,7 +34,7 @@ en:
         title:                  Title
         abstract:               Abstract
         position:               Position
-        visible:                Visible
+        visibility:             Visibility
         status:                 Status
       sample:
         name:                   Name

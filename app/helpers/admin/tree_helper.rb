@@ -3,7 +3,7 @@ module Admin::TreeHelper
     content_tag(:ul) do
       groups.map do |group, sub_groups|
         link_to(         
-          (content_tag(:span, ("#{group.title} (#{group.id}/#{group.position}: #{group.name} - #{group.visible})"), 
+          (content_tag(:span, ("#{group.title} (#{group.id}/#{group.position}: #{group.name} - #{group.visibility})"), 
                                 class: ('visible' if group.visible_in_tree)) + nested_groups(sub_groups)
           ).html_safe, [:admin, group])
       end.join.html_safe
@@ -14,7 +14,7 @@ module Admin::TreeHelper
   def ancestry_nested_nodes_tree(nodes) # nodes to be roots!
     content_tag :ul do
       nodes.each do |node|
-        concat(content_tag(:li, "#{node.title}  (#{node.id}. #{node.name} /#{node.position})", class: ('visible' if (node.visible and all_ancestors_are_visible?(node))))).html_safe
+        concat(content_tag(:li, "#{node.title}  (#{node.id}. #{node.name} /#{node.position})", class: ('visible' if (node.visibility and all_ancestors_are_visible?(node))))).html_safe
         if node.has_children? 
           concat(ancestry_nested_nodes_tree(node.children.order(:position))).html_safe
         end
@@ -24,7 +24,7 @@ module Admin::TreeHelper
 
   def all_ancestors_are_visible?(node)
     node.ancestors.each do |a|
-      return false if !a.visible?
+      return false if !a.visibility?
     end
     return true
   end
