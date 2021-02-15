@@ -22,8 +22,12 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def create
-    @category = Category.new(category_params)
+    parent = Category.find_by id: category_params[:parent]
+    updated_params = category_params
+    updated_params[:parent] = parent        # Thus provides correct attribute 'ancestry'
+    @category = Category.new(updated_params)
     authorize @category
+
     if @category.save
       flash[:success] = t('messages.created', model: @category.class.model_name.human)
       redirect_to [:admin, @category]
@@ -58,7 +62,7 @@ class Admin::CategoriesController < Admin::BaseController
 
     # Only allows a trusted parameter 'white list' through
     def category_params
-      params.require(:category).permit(:name, :title, :abstract, :position, :visibility, :status, :url, :seo_title, :seo_description, :seo_keywords, :ancestry, :content, :cover_image, :remove_cover_image, images: [])
+      params.require(:category).permit(:name, :title, :abstract, :position, :visibility, :status, :url, :seo_title, :seo_description, :seo_keywords, :ancestry, :parent, :content, :cover_image, :remove_cover_image, images: [])
     end
 
     # Swaps positions of sibling categories if any selected in the _form

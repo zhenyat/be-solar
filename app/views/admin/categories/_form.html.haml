@@ -5,7 +5,7 @@
         = f.error_notification message: t('messages.error_notification')
 
         .form-inputs
-          = render 'admin/shared/form_ancestry', f: f, object: @category
+          = render 'admin/shared/form_parent', f: f, object: @category
           = f.input :name
           = f.input :title
           = f.input :abstract
