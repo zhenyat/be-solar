@@ -30,10 +30,11 @@ td.value {
 }
 
 .visible {
-  color: blue;
+  color: navy;
   text-transform: uppercase;
 }
-// .invisible {
-//   color: lightgrey;
-//   text-transform: lowercase;
-// }
+
+.archived {
+  color: lightcoral;
+  text-transform: lowercase;
+}

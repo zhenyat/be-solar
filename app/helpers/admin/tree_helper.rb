@@ -4,10 +4,17 @@ module Admin::TreeHelper
       groups.map do |group, sub_groups|
         link_to(         
           (content_tag(:span, ("#{group.title} (#{group.id}/#{group.position}: #{group.name} - #{group.visibility})"), 
-                                class: ('visible' if group.visible_in_tree)) + nested_groups(sub_groups)
+                       class: group_classes(group)) + nested_groups(sub_groups)
           ).html_safe, [:admin, group])
       end.join.html_safe
     end
+  end
+
+  def group_classes(group)
+    group_classes = ''
+    group_classes << 'visible' if group.visible_in_tree
+    group_classes << ' archived' if group.archived?
+    group_classes
   end
 
   # ==== Version 2: obsolete
