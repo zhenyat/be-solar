@@ -24,6 +24,15 @@ en:
       access_denied:        Access denied for this user
       incorrect_password:   Incorrect password
       incorrect_email:      Incorrect email or no such user
+
+    # options:
+    #   unit:
+    #     pc:             pc.
+    #     box:            box
+    #     packaging:      packaging
+    #     kg:             kg.
+    #     l:              l.
+
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

@@ -21,6 +21,13 @@ en:
     uploaded:       File was successfully uploaded
     error_notification: 'Something went wrong'
 
+  # unit:
+  #   pc:             pc.
+  #   box:            box
+  #   packaging:      packaging
+  #   kg:             kg.
+  #   l:              l.
+
   status:
     active:         Active
     archived:       Archived

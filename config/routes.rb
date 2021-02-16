@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :categories
       resources :tree, only: :index # admin_tree_index_path, url:  /admin/tree/
       #get 'tree/index'             # admin_tree_index_path, url:  /admin/tree/index
+        resources :products
       # Add new admin resources before this line
     end
   
@@ -29,9 +30,10 @@ Rails.application.routes.draw do
       namespace :v1 do
         resources :samples
         resources :categories
+        resources :categories
         get 'pages/contacts', as: :contacts
         resources :companies#, only: :show
-        # get 'copmapnies/show'
+        # get 'copmanies/show'
       end
     end
     root 'pages#home'   # root_path for BE 

@@ -25,6 +25,14 @@ ru:
       incorrect_password:   Неверный пароль
       incorrect_email:      Ошибка в email или нет такого пользователя
 
+    # options:
+    #   unit:
+    #     pc:             шт.
+    #     box:            коробка
+    #     packaging:      упаковка
+    #     kg:             кг.
+    #     l:              л.
+
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

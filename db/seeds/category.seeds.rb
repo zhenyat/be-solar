@@ -99,10 +99,10 @@ begin
       seo_description: '',
       seo_keywords: ''
     )
-    caps = Category.create(
+    chapeaux = Category.create(
       parent:   headdresses,
-      name:     'caps', 
-      title:    'Шапки',
+      name:     'chapeaux', 
+      title:    'Шапки из конопли',
       abstract: 'Шапки ручной работы из конопляной пряжи',
       url:      'shapki-iz-konopli',
       seo_title: 'Шапки ручной работы из конопляной пряжи',
@@ -112,7 +112,7 @@ begin
     headbands = Category.create(
       parent:   headdresses,
       name:     'headbands', 
-      title:    'Повязки',
+      title:    'Повязки из конопли',
       abstract: 'Головные повязки из конопляной пряжи',
       url:      'povyazki-iz-konopli',
       seo_title: 'Головные повязки из конопляной пряжи',
@@ -122,7 +122,7 @@ begin
     hats = Category.create(
       parent:   headdresses,
       name:     'hats', 
-      title:    'Шляпки',
+      title:    'Шляпки из конопли',
       abstract: 'Шляпы и панамы из конопляной пряжи',
       url:      'shlyapki-iz-konopli',
       seo_title: 'Шляпы и панамы из конопляной пряжи',

@@ -10,6 +10,9 @@ ru:
       category:
         one:                    Категория
         other:                  Категории
+      product:
+        one:                    Товар
+        other:                  Товары
       sample:
         one:                    Образец
         other:                  Образцы
@@ -37,6 +40,21 @@ ru:
         parent:                 Предок
         cover_image:            Обложка
         visibility:             Видимость
+        status:                 Статус
+      product:
+        category:               Категория
+        name:                   Имя
+        title:                  Наименование
+        code:                   Артикул
+        unit:                   Ед. изм.
+        vendor_code:            Код производителя
+        vendor_price:           Цена производителя
+        price:                  Цена
+        hot:                    Акция
+        hot_price:              Цена по акции
+        quantity:               Количество
+        abstract:               Краткое описание
+        position:               Позиция
         status:                 Статус
       sample:
         name:                   Имя

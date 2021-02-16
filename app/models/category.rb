@@ -20,7 +20,6 @@ class Category < ApplicationRecord
   include Positionable
   include ImagesHandleable
   include Heritable
-  include Positionable
 
   enum status: %w(active archived)
 
@@ -28,24 +27,4 @@ class Category < ApplicationRecord
   validates :title,    presence: true
   validates :abstract, presence: true
   validates :url,      presence: true
-
-  # def self.visibles
-  #   visibles = []
-  #   Category.active.each do |category|
-  #     next if !category.visibility
-  #     if category.ancestors?
-  #       ok = true
-  #       category.ancestors.each do |ancestor|
-  #         if !ancestor.visibility
-  #           ok = false
-  #           break
-  #         end
-  #       end
-  #       visibles << category if ok
-  #     else  # root
-  #       visibles << category
-  #     end
-  #   end
-  #   Category.where(id: visibles.map(&:id))
-  # end
 end

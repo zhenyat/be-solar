@@ -21,6 +21,13 @@ ru:
     uploaded:       Файл успешно загружен
     error_notification: 'Что-то пошло не так'
 
+  # unit:
+  #   pc:             шт.
+  #   box:            коробка
+  #   packaging:      упаковка
+  #   kg:             кг.
+  #   l:              л.
+
   status:
     active:         Активный
     archived:       Архивный

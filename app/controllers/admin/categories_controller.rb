@@ -37,8 +37,12 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def update
+    parent = Category.find_by id: category_params[:parent]
+    updated_params = category_params
+    updated_params[:parent] = parent        # Thus provides correct attribute 'ancestry'
     authorize @category
-    if @category.update(category_params)
+
+    if @category.update(updated_params)
       flash[:success] = t('messages.updated', model: @category.class.model_name.human)
       redirect_to [:admin, @category]
     else      

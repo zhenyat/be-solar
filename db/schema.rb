@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_075230) do
+ActiveRecord::Schema.define(version: 2021_02_16_091708) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -111,6 +111,32 @@ ActiveRecord::Schema.define(version: 2021_02_05_075230) do
     t.index ["seo_title"], name: "index_companies_on_seo_title", unique: true
   end
 
+  create_table "products", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "name", null: false
+    t.string "title", null: false
+    t.string "code", null: false
+    t.integer "unit", limit: 1, default: 0, null: false
+    t.string "vendor_code", null: false
+    t.decimal "vendor_price", default: "0.0", null: false
+    t.decimal "price", default: "0.0", null: false
+    t.boolean "hot", default: false
+    t.decimal "hot_price", default: "0.0", null: false
+    t.integer "quantity", default: 0, null: false
+    t.text "abstract"
+    t.integer "position"
+    t.integer "status", limit: 1, default: 0, null: false
+    t.string "url", null: false
+    t.string "seo_title", null: false
+    t.text "seo_description", default: ""
+    t.text "seo_keywords", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["code"], name: "index_products_on_code", unique: true
+    t.index ["name"], name: "index_products_on_name", unique: true
+  end
+
   create_table "samples", force: :cascade do |t|
     t.string "name", null: false
     t.string "title", null: false
@@ -138,4 +164,5 @@ ActiveRecord::Schema.define(version: 2021_02_05_075230) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "products", "categories"
 end

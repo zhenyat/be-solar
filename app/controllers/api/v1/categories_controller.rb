@@ -8,4 +8,20 @@ class Api::V1::CategoriesController < Api::ApiController
 
     render json: categories
   end
+
+  def show
+    if @category.children?
+      @category.children
+      @sub_categories = @category.children.active.visible.order(:position)
+    else
+      @products = @category.products.active.visible.order(:position)
+    end
+  end
+
+  # def children_index
+  #   if @category.children?
+  #     @category.children
+  #     @sub_categories = @category.children.active.visible.order(:position)
+  #   end
+  # end
 end

@@ -10,6 +10,9 @@ en:
       category:
         one:                    Category
         other:                  Categories
+      product:
+        one:                    Product
+        other:                  Products
       sample:
         one:                    Sample
         other:                  Samples
@@ -36,6 +39,22 @@ en:
         position:               Position
         visibility:             Visibility
         status:                 Status
+      product:
+        category:               Category
+        name:                   Name
+        title:                  Title
+        code:                   Product Code
+        unit:                   Unit
+        vendor_code:            Vendor Code
+        vendor_price:           Vendor Price
+        price:                  Цена
+        hot:                    Hot
+        hot_price:              Hot Price
+        quantity:                    Quantity
+        abstract:               Abstract
+        position:               Position
+        status:                 Status
+
       sample:
         name:                   Name
         title:                  Title
