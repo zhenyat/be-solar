@@ -54,12 +54,13 @@
 #   30.12.2020  Ruby 3.0.0 / Rails 6.1.0
 #               devise_token_auth version from gitbub got Rails 6.1
 #   03.02.2021  Rails 6.1.1
+#   16.02.2021  Rails 6.1.2.1
 ################################################################################
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
-gem 'rails', '6.1.1'               # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '6.1.2.1'             # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 gem 'sqlite3'                      # Use sqlite3    as the database for Active Record
 # gem 'sqlite3', groups: [:test, :development]
