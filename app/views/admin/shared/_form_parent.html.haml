@@ -3,16 +3,16 @@
   - if object.has_parent?
     - if entity.respond_to? :active
       - if entity.column_names.include? 'title'
-        = f.input :parent, as: :select, collection: entity.active { |e| [e.title, e.id] }, selected: object.parent.id
+        = f.input :parent, as: :select, collection: entity.active.map { |e| [e.title, e.id] }, selected: object.parent.id
       - else
-        = f.input :parent, as: :select, collection: entity.active { |e| [e.name, e.id] }
+        = f.input :parent, as: :select, collection: entity.active.map { |e| [e.name, e.id] }
     - else
-      = f.input :parent, as: :select, collection: entity.all { |e| [e.title, e.id] }
+      = f.input :parent, as: :select, collection: entity.all.map { |e| [e.title, e.id] }
   - else
     - if entity.respond_to? :active
       - if entity.column_names.include? 'title'
-        = f.input :parent, as: :select, collection: entity.active { |e| [e.title, e.id] }
+        = f.input :parent, as: :select, collection: entity.active.map { |e| [e.title, e.id] }
       - else
-        = f.input :parent, as: :select, collection: entity.all { |e| [e.name, e.id] }
+        = f.input :parent, as: :select, collection: entity.all.map { |e| [e.name, e.id] }
     - else
-      = f.input :parent, as: :select, collection: entity.all { |e| [e.title, e.id] }
+      = f.input :parent, as: :select, collection: entity.all.map { |e| [e.title, e.id] }
