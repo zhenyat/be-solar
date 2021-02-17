@@ -19,3 +19,9 @@ ru:
 
   set_language:     Язык
   site_design:      Разработка сайта
+
+  number:
+    currency:
+      format:
+        format: "%n %u"
+        unit: "\u20BD"

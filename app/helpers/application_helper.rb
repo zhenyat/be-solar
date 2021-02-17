@@ -153,4 +153,17 @@ module ApplicationHelper
       l date, format: :long
     end
   end
+
+  ##############################################################################
+  #  Currency formatting
+  #  https://apidock.com/rails/ActionView/Helpers/NumberHelper/number_to_currency
+  #
+  #  17.02.2021  ZT
+  ##############################################################################
+  include ActionView::Helpers::NumberHelper
+
+  def number_to_currency(number, options = {})
+    options[:locale] ||= I18n.locale
+    super(number, options)
+  end
 end

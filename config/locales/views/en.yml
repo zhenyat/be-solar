@@ -5,3 +5,9 @@ en:
   search:           Search this site
   set_language:     Language
   site_design:      Site design
+
+  number:
+    currency:
+      format:
+        format: "%n %u"
+        unit: "\u20BD"
