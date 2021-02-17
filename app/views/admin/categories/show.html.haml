@@ -3,7 +3,7 @@
   %table.table.table-striped
     %tbody
       - @category.attributes.each do |key, value|
-        - unless key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at'
+        - if show_attribute? key
           %tr
             - if key == 'status'
               %td= t 'status.status'

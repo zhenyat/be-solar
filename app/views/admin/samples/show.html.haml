@@ -3,13 +3,14 @@
   %table.table.table-striped
     %tbody
       - @sample.attributes.each do |key, value|
-        - if key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at'
-          //skip these attributes
-        -else
+        - if show_attribute? key
           %tr
             - if key == 'status'
               %td= t 'status.status'
               %td= status_mark @sample.status
+            - elsif key.include? 'price'
+              %td= t "activerecord.attributes.product.#{key}"
+              %td= number_to_currency value
             -else
               %td= t "activerecord.attributes.sample.#{key}"
               %td= value

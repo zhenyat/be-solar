@@ -3,7 +3,7 @@
   %table.table.table-striped
     %tbody
       - @company.attributes.each do |key, value|
-        - unless key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at'
+        - unless key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at' || key == 'cover_image_url'
           %tr
             - if key == 'status'
               %td= t 'status.status'

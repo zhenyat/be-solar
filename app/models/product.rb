@@ -28,7 +28,7 @@ class Product < ApplicationRecord
   include ImagesHandleable
   include Positionable
   include ImagesHandleable
-
+  has_rich_text :content
   belongs_to :category, required: true
 
   enum unit:   %w(шт. коробка упаковка кг. л.)

@@ -1,4 +1,23 @@
 module Admin::ZtHelper
+
+  # Selects a hot mark to be displayed
+  def hot_mark hot
+    if hot 
+      image_tag('admin/check_mark.png', size: '12x15', alt: 'True')
+    else
+      image_tag('admin/minus_mark.png', size: '12x15', alt: 'False')
+    end
+  end
+  
+  
+  # Excludes Model attributes from show
+  def show_attribute? key
+    if (key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at' || key == 'cover_image_url')
+      return false
+    end
+    return true
+  end
+
   # Sorts array of objects by the Attribute (if passed)
   def sort_objects objects_array, attribute=nil
     if attribute.nil?
@@ -14,15 +33,6 @@ module Admin::ZtHelper
       image_tag('admin/check_mark.png', size: '12x15', alt: 'Active')
     else
       image_tag('admin/minus_mark.png', size: '12x15', alt: 'Archive')
-    end
-  end
-
-  # Selects a hot mark to be displayed
-  def hot_mark hot
-    if hot 
-      image_tag('admin/check_mark.png', size: '12x15', alt: 'True')
-    else
-      image_tag('admin/minus_mark.png', size: '12x15', alt: 'False')
     end
   end
 
