@@ -20,6 +20,7 @@ class Category < ApplicationRecord
   include Positionable
   include ImagesHandleable
   include Heritable
+  has_many :products
 
   enum status: %w(active archived)
 
